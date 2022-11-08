@@ -2,9 +2,8 @@ package com.example.rabbittestserver.rabbit.config.sender;
 
 import com.example.rabbittestserver.rabbit.domain.dto.MessageDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
-import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 
@@ -18,17 +17,19 @@ public class RabbitSender {
 
     private final RabbitMessagingTemplate template;
 
-    @Bean
-    Queue queue() {
-        return new Queue("TestQ", false);
-    }
+//    @Bean
+//    Queue queue() {
+//        return new Queue("TestQ", false);
+//    }
 
     /**
      * RabbitMQ 메시지 발행
-     * @param messageDTO messageDTO
+     * @param
      */
-    public void send(MessageDTO messageDTO) {
-        template.convertAndSend("TestQ", messageDTO.getContentMessageDTO());
+    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+    public void send() {
+        System.out.println("실행..");
+        template.convertAndSend("hello","hello world");
     }
 
 
