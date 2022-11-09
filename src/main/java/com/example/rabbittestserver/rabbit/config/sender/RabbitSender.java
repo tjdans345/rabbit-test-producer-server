@@ -26,10 +26,10 @@ public class RabbitSender {
      * RabbitMQ 메시지 발행
      * @param
      */
-    @Scheduled(fixedDelay = 1000, initialDelay = 500)
-    public void send() {
+//    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+    public void send(MessageDTO messageDTO) {
         System.out.println("실행..");
-        template.convertAndSend("hello","hello world");
+        template.convertAndSend("hello",messageDTO);
     }
 
 

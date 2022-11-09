@@ -15,21 +15,21 @@ public class RabbitSimpleService {
     private final RabbitSender rabbitSender;
 
 
-//    /**
-//     * RabbitMQ 메시지 발행
-//     * @param messageDTO messageDTO
-//     * @return 성공 메세지
-//     */
-//    public String sendMessage (MessageDTO messageDTO) {
-//      log.info("chatRoom : {} ", messageDTO.getChatRoomId());
-//      log.info("sender : {} ", messageDTO.getContentMessageDTO().getSender());
-//      try {
-//          rabbitSender.send(messageDTO);
-//          return "메시지 전송에 성공 하였습니다. ";
-//      } catch (Exception e) {
-//          log.debug("Exception 발생 : {}", e.getMessage());
-//          return "메시지 전송에 실패하였습니다.";
-//      }
-//    }
+    /**
+     * RabbitMQ 메시지 발행
+     * @param messageDTO messageDTO
+     * @return 성공 메세지
+     */
+    public String sendMessage (MessageDTO messageDTO) {
+      log.info("chatRoom : {} ", messageDTO.getChatRoomId());
+      log.info("sender : {} ", messageDTO.getContentMessageDTO().getSender());
+      try {
+          rabbitSender.send(messageDTO);
+          return "메시지 전송에 성공 하였습니다. ";
+      } catch (Exception e) {
+          log.debug("Exception 발생 : {}", e.getMessage());
+          return "메시지 전송에 실패하였습니다.";
+      }
+    }
 
 }

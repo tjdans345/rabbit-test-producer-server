@@ -24,11 +24,11 @@ public class RabbitSimpleController {
      * @param messageDTO messageDTO
      * @return HttpEntity
      */
-//    @PostMapping("/message")
-//    public HttpEntity<String>sendMessage(@RequestBody MessageDTO messageDTO) {
-//        return ResponseEntity.ok()
-//                .body(rabbitSimpleService.sendMessage(messageDTO));
-//    }
+    @PostMapping("/message")
+    public HttpEntity<String>sendMessage(@RequestBody MessageDTO messageDTO) {
+        return ResponseEntity.ok()
+                .body(rabbitSimpleService.sendMessage(messageDTO));
+    }
 
 
 }
