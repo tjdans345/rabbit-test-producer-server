@@ -1,20 +1,22 @@
 package com.example.rabbittestserver.rabbit.domain.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Getter @Setter
 public class MessageDTO {
 
-    private String chatRoomId;
-    private ContentMessageDTO contentMessageDTO;
+    private Long id;
+    private Long chatRoomId;
+    private Long memberId;
+    private String message;
+    private String region;
 
-    @Getter @Setter
-    public static class ContentMessageDTO {
-
-        private String sender;
-        private String content;
-        private String productId;
-    }
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime regDate;
 
 }

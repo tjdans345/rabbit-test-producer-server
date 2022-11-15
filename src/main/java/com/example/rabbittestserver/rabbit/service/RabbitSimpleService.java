@@ -22,12 +22,12 @@ public class RabbitSimpleService {
      */
     public String sendMessage (MessageDTO messageDTO) {
       log.info("chatRoom : {} ", messageDTO.getChatRoomId());
-      log.info("sender : {} ", messageDTO.getContentMessageDTO().getSender());
+      log.info("sender : {} ", messageDTO.getMemberId());
       try {
           rabbitSender.send(messageDTO);
           return "메시지 전송에 성공 하였습니다. ";
       } catch (Exception e) {
-          log.debug("Exception 발생 : {}", e.getMessage());
+          log.info("Exception 발생 : {}", e.getMessage());
           return "메시지 전송에 실패하였습니다.";
       }
     }

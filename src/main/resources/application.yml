@@ -8,6 +8,7 @@ spring:
     username: username
     password: password
 
+
 config:
   app:
     duration: 10000
