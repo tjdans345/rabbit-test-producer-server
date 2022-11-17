@@ -10,13 +10,13 @@ import java.time.LocalDateTime;
 @Getter @Setter
 public class MessageDTO {
 
-    private Long id;
-    private Long chatRoomId;
-    private Long memberId;
+    private String id;
+    private String chatRoomId;
+    private String memberId;
     private String message;
     private String region;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime regDate;
+    private LocalDateTime regDate = LocalDateTime.now();
 
 }

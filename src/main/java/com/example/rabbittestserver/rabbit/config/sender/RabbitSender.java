@@ -1,8 +1,11 @@
 package com.example.rabbittestserver.rabbit.config.sender;
 
+import com.example.rabbittestserver.rabbit.config.RabbitConfig;
+import com.example.rabbittestserver.rabbit.config.common.RabbitConstructor;
 import com.example.rabbittestserver.rabbit.domain.dto.MessageDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -18,15 +21,14 @@ public class RabbitSender {
 //    Queue queue() {
 //        return new Queue("chat", false);
 //    }
-
     /**
      * RabbitMQ 메시지 발행
      * @param messageDTO messageDTO
      */
-    @Scheduled(fixedDelay = 1000, initialDelay = 500)
+//    @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void send(MessageDTO messageDTO) {
         System.out.println("실행..");
-        template.convertAndSend("/chat" , messageDTO.toString());
+        template.convertAndSend(RabbitConstructor.CHAT_EXCHANGE_NAME, "room." + messageDTO.getChatRoomId(),messageDTO);
     }
 
 }
